@@ -1,38 +1,51 @@
-# create-svelte
+# Weather app
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+*Wheater App using Svelte framework*
 
-## Creating a project
+## Built with 🛠️
 
-If you're seeing this, you've probably already done this step. Congrats!
+- [Svelte](https://svelte.dev) - The web framework used
+
+## Requirements 📋
+
+*Svelte installation:*
+
+during the installation of [NodeJS](https://nodejs.org)
+
+## Environment configuration ⚙️
+
+*Project creation:*
 
 ```bash
-# create a new project in the current directory
-npm init svelte
-
-# create a new project in my-app
-npm init svelte my-app
+npm create svelte@latest <project-name>
 ```
 
-## Developing
+*Install dependencies:*
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+```sh
+npm install
+```
+
+*Install Typescript:*
+
+*during installation*
+
+*- or -*
+
+```sh
+node scripts/setupTypeScript.js
+```
+
+## Deployment 📦
+
+*Execute project in development mode:*
 
 ```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
-
-To create a production version of your app:
+*Building and running in production mode:*
 
 ```bash
 npm run build
 ```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
