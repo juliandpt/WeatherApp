@@ -1,5 +1,5 @@
 <svelte:head>
-  <title>{ $page.params.city } | WeatherApp</title>
+  <title>{ uppercase($page.params.city) } | WeatherApp</title>
 </svelte:head>
 
 <div class="container">
@@ -34,7 +34,7 @@
         <div class="card-body d-flex justify-content-between align-center px-5 py-5">
           <div>
             <p class="mb-2">
-              {data.description}
+              { data.description }
             </p>
 
             <div class="d-flex justify-center align-center">
@@ -44,13 +44,13 @@
 
               <div class="d-flex flex-column justify-center align-center my-auto">
                 <span class="mb-1">
-                  {getDate()}
+                  { getDate() }
                 </span>
 
                 <div class="d-flex justify-center align-center">
                   <img src="icons/location.svg" width="24" height="auto" alt="location" class="me-1">
 
-                  {data.city}, {data.country}
+                  { data.city }, { data.country }
                 </div>
               </div>
             </div>
@@ -71,7 +71,7 @@
           </p>
 
           <h1 class="card-text display-6 text-center">
-            {formatedGrades(data.feels_like)}º
+            { formatedGrades(data.feels_like) }º
           </h1>
         </div>
       </div>
@@ -85,7 +85,7 @@
           </p>
 
           <h1 class="card-text display-6 text-center">
-            {formatedGrades(data.temp_max)}º
+            { formatedGrades(data.temp_max) }º
           </h1>
         </div>
       </div>
@@ -99,7 +99,7 @@
           </p>
 
           <h1 class="card-text display-6 text-center">
-            {formatedGrades(data.temp_min)}º
+            { formatedGrades(data.temp_min) }º
           </h1>
         </div>
       </div>
@@ -113,7 +113,7 @@
           </p>
 
           <h1 class="card-text display-6 text-center">
-            {data.wind} m/s
+            { data.wind } m/s
           </h1>
         </div>
       </div>
@@ -127,7 +127,7 @@
           </p>
 
           <h1 class="card-text display-6 text-center">
-            {data.humidity}%
+            { data.humidity }%
           </h1>
         </div>
       </div>
@@ -141,7 +141,7 @@
           </p>
 
           <h1 class="card-text display-6 text-center">
-            {data.clouds}%
+            { data.clouds }%
           </h1>
         </div>
       </div>
@@ -155,26 +155,8 @@
 
 import { page } from "$app/stores"
 import { goto } from "$app/navigation"
+import { getWeatherDataByQuery } from "../services/querys.js"
+import { getDate, formatedGrades, uppercase } from "../services/index.js"
 
-import { getWeatherData } from "../services/querys.js"
-
-const weatherPromise = getWeatherData($page.params.city)
-
-let getDate = () => {
-  let date = new Date()
-  
-  let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-  let weekday = weekdays[date.getDay()]
-  
-  let day = date.getDate()
-
-  let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-  let month = months[date.getMonth()]
-
-  return `${weekday}, ${day} ${month}`
-}
-
-let formatedGrades = (grades) => {
-  return Math.floor(grades)
-}
+const weatherPromise = getWeatherDataByQuery($page.params.city)
 </script>
