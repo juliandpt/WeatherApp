@@ -1,3 +1,7 @@
+<svelte:head>
+  <title>Home | Weather?</title>
+</svelte:head>
+
 <div class="searcher">
   <div class="container">
     {#await weatherPromise}
@@ -91,7 +95,7 @@
           <div class="col-6 col">
             <div class="card bg-light height100">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Weather:</h5>
                 <h3 class="card-text placeholder-glow">
                   <span class="placeholder col-6"></span>
                 </h3>
@@ -106,7 +110,7 @@
 
     <div class="row" style="margin-top: 10vh; margin-bottom: 10vh;">
       <div class="col-12 col-md-6 col">
-        <div class="card bg-light" style="padding: 1.5em;">
+        <div class="card bg-light" style="padding: 1.5em; position: relative; overflow: hidden;">
           <div style="display: flex;">
             <div style="display: flex;">
               <img src="icons/location-arrow.svg" class="me-3" width="16" height="auto" alt="location" />
@@ -158,6 +162,8 @@
               </p>
             </div>
           </div>
+
+          <img src="images/weathers/{ data.icon }.png" width="300" height="auto" alt="icon" div class="icon"/>
         </div>
       </div>
 
@@ -188,22 +194,13 @@
         </div>
 
         <div class="row height50">
-          <div class="col-6 col">
+          <div class="col-12 col">
             <div class="card bg-light height100">
               <div class="card-body">
                 <h5 class="card-title">Feels like:</h5>
                 <h3 class="card-text">
                   { formatedGrades(data.feels_like) } ºC
                 </h3>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col">
-            <div class="card bg-light height100">
-              <div class="card-body">
-                <h5 class="card-title">Weather:</h5>
-                
-                <img src="images/weathers/1.png" width="50" height="auto" alt="cloud" />
               </div>
             </div>
           </div>
@@ -258,6 +255,12 @@ p {
 
 .no-margin {
   margin: 0;
+}
+
+.icon {
+  position: absolute;
+  bottom: calc(-5%);
+  right: calc(-15%);
 }
 </style>
 

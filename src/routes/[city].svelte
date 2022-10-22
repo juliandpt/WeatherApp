@@ -1,19 +1,9 @@
 <svelte:head>
-  <title>{ uppercase($page.params.city) } | WeatherApp</title>
+  <title>{ uppercase($page.params.city) } | Weather?</title>
 </svelte:head>
 
 <div class="container">
   <div class="row my-5">
-    <div class="col">
-      <button type="button" class="btn btn-light d-flex justify-center align-center" on:click={() => goto('/')}>
-        <img src="icons/arrow-left.svg" width="24" height="auto" alt="back" class="mr-2">
-  
-        Go back
-      </button>
-    </div>
-  </div>
-
-  <div class="row">
     {#await weatherPromise}
 
     <div class="card" aria-hidden="true">
@@ -57,7 +47,7 @@
           </div>
 
           <div>
-            <img src="images/28.png" width="200" height="auto" alt="sun">
+            <img src="images/weathers/{ data.icon }.png" width="200" height="auto" alt="icon">
           </div>
         </div>
       </div>
@@ -154,7 +144,6 @@
 <script>
 
 import { page } from "$app/stores"
-import { goto } from "$app/navigation"
 import { getWeatherDataByQuery } from "../services/querys.js"
 import { getDate, formatedGrades, uppercase } from "../services/index.js"
 
